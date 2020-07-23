@@ -66,7 +66,7 @@ class ExternalFactors(models.Model):
         ('1','Yes'),
         ('2','No'),
     ]
-    dyed_choices=models.CharField(max_length=1,choices=dyed_choices)
+    dyed=models.CharField(max_length=1,choices=dyed_choices)
 
     colored_choices=[
         ('1','Highlighted'),
@@ -91,13 +91,6 @@ class ExternalFactors(models.Model):
         ('4','None')
     ]
     appliances=models.CharField(max_length=1,choices=appliance_choices)
-
-    volume_choices=[
-        ('1','Very low volume'),
-        ('2','Moderate volume'),
-        ('3','Voluminous')
-    ]
-    volume=models.CharField(max_length=1,choices=volume_choices)
 
     style_choices=[
         ('1','Hair Oil'),
