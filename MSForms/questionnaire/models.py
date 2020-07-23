@@ -1,146 +1,146 @@
 from django.db import models
 
 class HairProfile(models.Model):
-    naturally_dried_choices=[
-        ('straight','Smooth/Straight'),
-        ('wavy','Wavy'),
-        ('curly','Curly')
+    texture_choices=[
+        ('1','Smooth/Straight'),
+        ('2','Wavy'),
+        ('3','Curly')
     ]
-    naturally_dried_looks=models.CharField(max_length=20,choices=naturally_dried_choices)
+    texture=models.CharField(max_length=1,choices=texture_choices)
 
     state_choices=[
-        ('dry','Dry'),
-        ('normal','Normal'),
-        ('oily','Oily'),
-        ('oily_dry_ends','Oily with dry ends')
+        ('1','Dry'),
+        ('2','Normal'),
+        ('3','Oily'),
+        ('4','Oily with dry ends')
     ]
-    state=models.CharField(max_length=20,choices=state_choices)
+    state=models.CharField(max_length=1,choices=state_choices)
 
     length_choices=[
-        ('short','Short'),
-        ('medium','Medium(upto shoulders)'),
-        ('Long','Long (longer than shoulders)')
+        ('1','Short'),
+        ('2','Medium(upto shoulders)'),
+        ('3','Long (longer than shoulders)')
     ]
 
-    length=models.CharField(max_length=30,choices=length_choices)
+    length=models.CharField(max_length=1,choices=length_choices)
 
     thickness_choices=[
-        ('thin','Thin/Finer than Thread'),
-        ('medium','Medium/Same as Thread'),
-        ('coarse','Coarse/Thicker than thread')
+        ('1','Thin/Finer than Thread'),
+        ('2','Medium/Same as Thread'),
+        ('3','Coarse/Thicker than thread')
     ]
-    thickness=models.CharField(max_length=30,choices=thickness_choices)
+    thickness=models.CharField(max_length=1,choices=thickness_choices)
 
     volume_choices=[
-        ('low','Very low volume'),
-        ('moderate','Moderate volume'),
-        ('high','Voluminous')
+        ('1','Very low volume'),
+        ('2','Moderate volume'),
+        ('3','Voluminous')
     ]
-    volume=models.CharField(max_length=30,choices=volume_choices)
+    volume=models.CharField(max_length=1,choices=volume_choices)
 
     scalp_choices=[
-        ('insensitive','Not sensitive'),
-        ('lil_itchy','A little bit itchy'),
-        ('itchy','Itchy and Painful')
+        ('1','Not sensitive'),
+        ('2','A little bit itchy'),
+        ('3','Itchy and Painful')
     ]
 
-    scalp=models.CharField(max_length=30,choices=scalp_choices)
+    scalp=models.CharField(max_length=1,choices=scalp_choices)
 
     dandruff_choices=[
-        ('no','No'),
-        ('little','Little bit'),
-        ('lots','A lot')
+        ('1','No'),
+        ('2','Little bit'),
+        ('3','A lot')
     ]
-    dandruff=models.CharField(max_length=30,choices=dandruff_choices)
+    dandruff=models.CharField(max_length=1,choices=dandruff_choices)
 
     hair_loss_choices=[
-        ('low','A few hair strands'),
-        ('moderate','A dozen hair strands'),
-        ('high','More than a dozen hair strands')
+        ('1','A few hair strands'),
+        ('2','A dozen hair strands'),
+        ('3','More than a dozen hair strands')
     ]
-    hair_loss=models.CharField(max_length=40,choices=hair_loss_choices)
+    hair_loss=models.CharField(max_length=1,choices=hair_loss_choices)
 
 
 class ExternalFactors(models.Model):
     dyed_choices=[
-        ('yes','Yes'),
-        ('no','No'),
-        ]
-    dyed_choices=models.CharField(max_length=5,choices=dyed_choices)
+        ('1','Yes'),
+        ('2','No'),
+    ]
+    dyed_choices=models.CharField(max_length=1,choices=dyed_choices)
 
     colored_choices=[
-        ('highligthed','Highlighted'),
-        ('permanently','Permanent'),
-        ('semi-permanently','Semi-Permanent'),
-        ('bleached','Bleached')
+        ('1','Highlighted'),
+        ('2','Permanent'),
+        ('3','Semi-Permanent'),
+        ('4','Bleached')
     ]
-    colored=models.CharField(max_length=20,choices=colored_choices)
+    colored=models.CharField(max_length=1,choices=colored_choices)
 
     chemical_treatment_choices=[
-        ('No','Short'),
-        ('Yes1','Yes, Straightening or Waving'),
-        ('Yes2','Yes, Keratin or Cysteine treatment')
+        ('1','Short'),
+        ('2','Yes, Straightening or Waving'),
+        ('3','Yes, Keratin or Cysteine treatment')
     ]
 
-    chemical_treatment=models.CharField(max_length=40,choices=chemical_treatment_choices)
+    chemical_treatment=models.CharField(max_length=1,choices=chemical_treatment_choices)
 
     appliance_choices=[
-        ('dryer','Hair Dryer'),
-        ('straightner','Hair Straightner'),
-        ('iron','Curling Iron'),
-        ('none','None')
+        ('1','Hair Dryer'),
+        ('2','Hair Straightner'),
+        ('3','Curling Iron'),
+        ('4','None')
     ]
-    appliances=models.CharField(max_length=20,choices=appliance_choices)
+    appliances=models.CharField(max_length=1,choices=appliance_choices)
 
     volume_choices=[
-        ('low','Very low volume'),
-        ('moderate','Moderate volume'),
-        ('high','Voluminous')
+        ('1','Very low volume'),
+        ('2','Moderate volume'),
+        ('3','Voluminous')
     ]
-    volume=models.CharField(max_length=30,choices=volume_choices)
+    volume=models.CharField(max_length=1,choices=volume_choices)
 
     style_choices=[
-        ('hair_oil','Hair Oil'),
-        ('gel','Gel or Paste'),
-        ('d_shampoo','Dry Shampoo'),
-        ('spray','Hair Spray'),
-        ('mousse','Mousse'),
-        ('none','None')
+        ('1','Hair Oil'),
+        ('2','Gel or Paste'),
+        ('3','Dry Shampoo'),
+        ('4','Hair Spray'),
+        ('5','Mousse'),
+        ('6','None')
     ]
 
-    style=models.CharField(max_length=20,choices=style_choices)
+    style=models.CharField(max_length=1,choices=style_choices)
 
     hair_product=models.CharField(max_length=30)
 
     water_hardness_choices=[
-        ('soft','Soft'),
-        ('hard','Hard'),
-        ('idk','I do not know')
+        ('1','Soft'),
+        ('2','Hard'),
+        ('3','I do not know')
     ]
-    water_hardness=models.CharField(max_length=15,choices=water_hardness_choices)
+    water_hardness=models.CharField(max_length=1,choices=water_hardness_choices)
 
     sunlight_exposure_choices=[
        ('1','1 hour'),
-       ('1-3','1-3 hours'),
-       ('>3','More than 3 hours')
+       ('2','1-3 hours'),
+       ('3','More than 3 hours')
     ]    
-    sunlight_exposure=models.CharField(max_length=20,choices=sunlight_exposure_choices)
+    sunlight_exposure=models.CharField(max_length=1,choices=sunlight_exposure_choices)
 
 class Preferences(models.Model):
     goals=[
-        ('shine','Shine'),('smooth','Smoothness'),
-        ('len','Lengthen'),('vol','Volume'),
-        ('thick','Thickness'),('strength','Strengthen'),
-        ('split','Fix split ends'),('anti-dry','Anti-Dryness'),
-        ('oily','Oil COntrol'),('anti-frizz','Anti-Frizz'),
-        ('damage','Damage Repair'),('dandruff','Anti-dandruff'),
-        ('color','Color Protection'),('thermal','Thermal Protection')
+        ('1','Shine'),('2','Smoothness'),
+        ('3','Lengthen'),('4','Volume'),
+        ('5','Thickness'),('6','Strengthen'),
+        ('7','Fix split ends'),('8','Anti-Dryness'),
+        ('9','Oil COntrol'),('10','Anti-Frizz'),
+        ('11','Damage Repair'),('12','Anti-dandruff'),
+        ('13','Color Protection'),('14','Thermal Protection')
     ]
     hair_goals=models.CharField(max_length=30,choices=goals)
 
     color_choices=[
-        ('peach','Peach (with Apricot)'),('pink','Pink (with Strawberry'),
-        ('blue','Blue (with Blueberry'),('green','Green (with Avocado)')
+        ('1','Peach (with Apricot)'),('2','Pink (with Strawberry'),
+        ('3','Blue (with Blueberry'),('4','Green (with Avocado)')
     ]
     product_color=models.CharField(max_length=30,choices=color_choices)
 
