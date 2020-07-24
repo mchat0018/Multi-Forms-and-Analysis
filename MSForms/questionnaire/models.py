@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class HairProfile(models.Model):
     texture_choices=[
@@ -60,6 +61,8 @@ class HairProfile(models.Model):
     ]
     hair_loss=models.CharField(max_length=1,choices=hair_loss_choices)
 
+    user= models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+
 
 class ExternalFactors(models.Model):
     dyed_choices=[
@@ -119,6 +122,9 @@ class ExternalFactors(models.Model):
     ]    
     sunlight_exposure=models.CharField(max_length=1,choices=sunlight_exposure_choices)
 
+    user= models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+
+
 class Preferences(models.Model):
     goals=[
         ('1','Shine'),('2','Smoothness'),
@@ -138,3 +144,5 @@ class Preferences(models.Model):
     product_color=models.CharField(max_length=30,choices=color_choices)
 
     bottle_name=models.CharField(max_length=8)
+
+    user= models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)

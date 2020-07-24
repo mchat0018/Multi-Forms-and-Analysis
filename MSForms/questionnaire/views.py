@@ -3,6 +3,7 @@ from .forms import *
 from .models import HairProfile,ExternalFactors,Preferences
 from formtools.wizard.views import SessionWizardView
 
+
 FORMS_FOR_HAIR_PROFILE=[
     ('0', TextureForm),
     ('1', StateForm),
@@ -29,7 +30,15 @@ class HairProfileWizard(SessionWizardView):
     
     def get_template_names(self):
         return [TEMPLATES_FOR_HAIR_PROFILE[self.steps.current]]
-    
+
+    def get_form(self,step=None,data=None,files=None):
+        form=super().get_form(step,data,files)
+        if step is None:
+            step=self.steps.current
+        if step=='7':
+            form.instance.user=self.request.user
+        return form
+        
     def done(self,form_list,**kwargs):
         pass
 
@@ -55,12 +64,52 @@ TEMPLATES_FOR_EXTERNAL_FACTORS={
     '7': 'questionnaire/sunlight_exposure.html'
 }
 
+def check_if_color(wizard):
+    cleaned_data=wizard.get_cleaned_data_for_step('0') or {}
+    return cleaned_data.get('dyed','1')
+
+
 class ExternalFactorsWizard(SessionWizardView):
-    
+    condition_dict={'1':check_if_color}
+
     def get_template_names(self):
         return [TEMPLATES_FOR_EXTERNAL_FACTORS[self.steps.current]]
+    
+    def get_form(self,step=None,data=None,files=None):
+        form=super().get_form(step,data,files)
+        if step is None:
+            step=self.steps.current
+        if step=='7':
+            form.instance.user=self.request.user
+        return form
     
     def done(self,form_list,**kwargs):
         pass
 
+FORMS_FOR_PREFERENCES=[
+    ('0', HairGoalsForm),
+    ('1', ProductColorsForm),
+    ('2', BottleNameForm)
+]
+
+TEMPLATES_FOR_PREFERENCES={
+    '0': 'questionnaire/hair_goals.html',
+    '1': 'questionnaire/product_color.html',
+    '2': 'questionnaire/bottle_name.html'
+}
+
+class PreferencesWizard(SessionWizardView):
     
+    def get_template_names(self):
+        return [TEMPLATES_FOR_PREFERENCES[self.steps.current]]
+    
+    def get_form(self,step=None,data=None,files=None):
+        form=super().get_form(step,data,files)
+        if step is None:
+            step=self.steps.current
+        if step=='2':
+            form.instance.user=self.request.user
+        return form
+    
+    def done(self,form_list,**kwargs):
+        pass

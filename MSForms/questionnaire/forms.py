@@ -101,3 +101,23 @@ class SunlightExposure(forms.ModelForm):
     class Meta:
         model=ExternalFactors
         fields=['sunlight_exposure']
+
+    
+class HairGoalsForm(forms.ModelForm):
+    hair_goals=forms.ChoiceField(widget=forms.RadioSelect,choices=Preferences.goals)
+
+    class Meta:
+        model=Preferences
+        fields=['hair_goals']
+
+class ProductColorsForm(forms.ModelForm):
+    product_color=forms.ChoiceField(widget=forms.RadioSelect,choices=Preferences.color_choices)
+
+    class Meta:
+        model=Preferences
+        fields=['product_color']
+
+class BottleNameForm(forms.ModelForm):
+    class Meta:
+        model=Preferences
+        fields=['bottle_name']

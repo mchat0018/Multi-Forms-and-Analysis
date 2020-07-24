@@ -1,0 +1,31 @@
+{% extends 'questionnaire/base.html' %}
+{% load i18n %}
+{% block content %}
+    <div>
+        <p>Step {{wizard.steps.step1}} of {{wizard.steps.count}}</p>
+    </div>
+    <form action="" method='POST'>
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class='border-bottom mb-4'> While combing you lose </legend>
+            <table>    
+                {{wizard.management_form}}
+                {% if wizard.form.forms %}
+                    {{wizard.management_form}}
+                    {% for form in wizard.form.forms %}
+                        {{form}}
+                    {% endfor %}
+                {% else %}
+                    {{wizard.form}}
+                {% endif %}
+            </table>
+        </fieldset>
+        <div class="form-group">
+            {% if wizard.steps.prev %}
+                <button class="btn btn-outline-info" type="submit" name="wizard-goto-step" value="{{ wizard.steps.first}}"> {% trans "first step" %} </button>
+                <button class="btn btn-outline-info" type="submit" name="wizard-goto-step" value="{{ wizard.steps.prev}}"> {% trans "prev step" %} </button>
+            {% endif %}
+            <button type='submit', class= "btn btn-outline-info" value="{% trans 'submit' %}"> Next </button>
+        </div>
+    </form>
+{% endblock %}
