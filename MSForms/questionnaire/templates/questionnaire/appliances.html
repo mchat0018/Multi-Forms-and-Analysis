@@ -7,7 +7,7 @@
     <form action="" method='POST'>
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class='border-bottom mb-4'> Usually your hair is </legend>
+            <legend class='border-bottom mb-4'> <p>Appliances you use to style your hair</p><span class="text-muted">You can choose more than one option</span> </legend>
             <table>    
                 {{wizard.management_form}}
                 {% if wizard.form.forms %}

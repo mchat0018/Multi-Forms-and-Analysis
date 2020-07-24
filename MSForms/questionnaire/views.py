@@ -66,7 +66,7 @@ TEMPLATES_FOR_EXTERNAL_FACTORS={
 
 def check_if_color(wizard):
     cleaned_data=wizard.get_cleaned_data_for_step('0') or {}
-    return cleaned_data.get('dyed','1')
+    return cleaned_data.get('dyed') == '1'
 
 
 class ExternalFactorsWizard(SessionWizardView):

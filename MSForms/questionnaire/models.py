@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from multiselectfield import MultiSelectField
 
 class HairProfile(models.Model):
     texture_choices=[
@@ -80,7 +81,7 @@ class ExternalFactors(models.Model):
     colored=models.CharField(max_length=1,choices=colored_choices)
 
     chemical_treatment_choices=[
-        ('1','Short'),
+        ('1','No'),
         ('2','Yes, Straightening or Waving'),
         ('3','Yes, Keratin or Cysteine treatment')
     ]
@@ -93,7 +94,7 @@ class ExternalFactors(models.Model):
         ('3','Curling Iron'),
         ('4','None')
     ]
-    appliances=models.CharField(max_length=1,choices=appliance_choices)
+    appliances=MultiSelectField(max_length=1,choices=appliance_choices)
 
     style_choices=[
         ('1','Hair Oil'),
@@ -104,7 +105,7 @@ class ExternalFactors(models.Model):
         ('6','None')
     ]
 
-    style=models.CharField(max_length=1,choices=style_choices)
+    style=MultiSelectField(choices=style_choices, max_length=1)
 
     hair_product=models.CharField(max_length=30)
 

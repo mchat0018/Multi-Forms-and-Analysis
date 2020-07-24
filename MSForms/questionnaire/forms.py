@@ -1,5 +1,6 @@
 from django import forms
 from .models import HairProfile,ExternalFactors,Preferences
+from multiselectfield import MultiSelectFormField
 
 class TextureForm(forms.ModelForm):
     texture=forms.ChoiceField(widget=forms.RadioSelect,choices=HairProfile.texture_choices)
@@ -71,14 +72,14 @@ class ChemicalTreatmentForm(forms.ModelForm):
         fields=['chemical_treatment']
 
 class ApplianceForm(forms.ModelForm):
-    appliances=forms.ChoiceField(widget=forms.RadioSelect,choices=ExternalFactors.appliance_choices)
+    appliances=MultiSelectFormField(widget=forms.CheckboxSelectMultiple,choices=ExternalFactors.appliance_choices)
 
     class Meta:
         model=ExternalFactors
         fields=['appliances']
 
 class StyleForm(forms.ModelForm):
-    style=forms.ChoiceField(widget=forms.RadioSelect,choices=ExternalFactors.style_choices)
+    style=MultiSelectFormField(widget=forms.CheckboxSelectMultiple,choices=ExternalFactors.style_choices)
 
     class Meta:
         model=ExternalFactors
