@@ -1,0 +1,132 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'questionnaire/style.css' %}">
+        <title>Hello, world!</title>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form id="msform" action="" method="post">
+                    {% csrf_token %}
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active">Step 1</li>
+                        <li>Step 2</li>
+                        <li>Step 3</li>
+                        <li>Step 4</li>
+                        <li>Step 5</li>
+                        <li>Step 6</li>
+                        <li>Step 7</li>
+                        <li>Step 8</li>
+                    </ul>
+                    <!-- fieldsets -->
+                    <fieldset>
+                        <h2 class="fs-title">Step 1</h2>
+                        <h3 class="fs-subtitle">When naturally dried, your hair look like</h3>
+                        <input type="radio" id="1.1" name="texture" value="1">
+                        <label for="1.1"> Smooth/Straight</label>
+                        <input type="radio" id="1.2" name="texture" value="2">
+                        <label for="1.2"> Wavy </label>
+                        <input type="radio" id="1.3" name="texture" value="3">
+                        <label for="1.3"> Curly </label>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Step 2</h2>
+                        <h3 class="fs-subtitle">Usually your hair is</h3>
+                        <select name="state" id="2">
+                            <option value="1">Dry</option>
+                            <option value="2">Normal</option>
+                            <option value="3">Oily</option>
+                            <option value="4">Oily, but dry at the ends</option>
+                        </select>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Step 3</h2>
+                        <h3 class="fs-subtitle">Length of your hair is</h3>
+                        <select name="length" id="3">
+                            <option value="1">Short</option>
+                            <option value="2">Medium(upto shoulders)</option>
+                            <option value="3">Long(beyond shoulder length)</option>
+                        </select>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Step 4</h2>
+                        <h3 class="fs-subtitle">Thickness of your hair is <br><span class="text-muted">(compared to a normal sewing thread)</span></h3>
+                        <select name="thickness" id="4">
+                            <option value="1">Thin/Finer than thread</option>
+                            <option value="2">Normal/Same as thread</option>
+                            <option value="3">Coarse/Thicker than thread</option>
+                        </select>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Step 5</h2>
+                        <h3 class="fs-subtitle">Usually, volume of your hair </h3>
+                        <select name="volume" id="5">
+                            <option value="1">Very low volume</option>
+                            <option value="2">Moderate volume</option>
+                            <option value="3">Voluminous</option>
+                        </select>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Step 6</h2>
+                        <h3 class="fs-subtitle">Most of the time, your scalp is</h3>
+                        <select name="scalp" id="6">
+                            <option value="1">Not sensitive</option>
+                            <option value="2">A little bit itchy</option>
+                            <option value="3">Itchy and painful</option>
+                        </select>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Step 7</h2>
+                        <h3 class="fs-subtitle">Do you notice dandruff in your hair?</h3>
+                        <select name="dandruff" id="7">
+                            <option value="1">No</option>
+                            <option value="2">A little bit</option>
+                            <option value="3">A lot</option>
+                        </select>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    <fieldset>
+                        <h2 class="fs-title">Step 8</h2>
+                        <h3 class="fs-subtitle">How many strands do you lose while combing your hair?</h3>
+                        <select name="dandruff" id="7">
+                            <option value="1">A few hair strands</option>
+                            <option value="2">A dozen hair strands</option>
+                            <option value="3">More than a dozen hair strands</option>
+                        </select>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <script src="{% static 'questionnaire/jscript.js' %}"></script>
+    </body>
+</html>

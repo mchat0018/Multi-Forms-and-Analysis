@@ -78,7 +78,7 @@ class ExternalFactors(models.Model):
         ('3','Semi-Permanent'),
         ('4','Bleached')
     ]
-    colored=models.CharField(max_length=1,choices=colored_choices)
+    colored=models.CharField(max_length=1,choices=colored_choices,blank=True,null=True)
 
     chemical_treatment_choices=[
         ('1','No'),
