@@ -136,13 +136,13 @@ class Preferences(models.Model):
         ('11','Damage Repair'),('12','Anti-dandruff'),
         ('13','Color Protection'),('14','Thermal Protection')
     ]
-    hair_goals=models.CharField(max_length=30,choices=goals)
+    hair_goals=MultiSelectField(max_length=2,choices=goals)
 
     color_choices=[
         ('1','Peach (with Apricot)'),('2','Pink (with Strawberry'),
         ('3','Blue (with Blueberry'),('4','Green (with Avocado)')
     ]
-    product_color=models.CharField(max_length=30,choices=color_choices)
+    product_color=MultiSelectField(max_length=1,choices=color_choices)
 
     bottle_name=models.CharField(max_length=8)
 
