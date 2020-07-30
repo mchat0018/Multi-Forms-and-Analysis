@@ -7,65 +7,65 @@ $(document).ready(function(){
     $(".next").click(function(){
 
         //validate the current fieldset
-        // var form=$("#msform");
+        var form=$("#msform");
         
-        // form.validate({
-        //     rules:{
-        //         texture : {
-        //             required:true,
-        //         },
-        //         state : {
-        //             required:true,
-        //         },
-        //         length : {
-        //             required:true,
-        //         },
-        //         thickness : {
-        //             required:true,
-        //         },
-        //         volume : {
-        //             required:true,
-        //         },
-        //         scalp : {
-        //             required:true,
-        //         },
-        //         dandruff : {
-        //             required:true,
-        //         },
-        //         hair_loss : {
-        //             required:true,
-        //         }
-        //     },
+        form.validate({
+            rules:{
+                texture : {
+                    required:true,
+                },
+                state : {
+                    required:true,
+                },
+                length : {
+                    required:true,
+                },
+                thickness : {
+                    required:true,
+                },
+                volume : {
+                    required:true,
+                },
+                scalp : {
+                    required:true,
+                },
+                dandruff : {
+                    required:true,
+                },
+                hair_loss : {
+                    required:true,
+                }
+            },
 
-        //     messages: {
-        //         texture : {
-        //             required:"Please select one of the options",
-        //         },
-        //         state : {
-        //             required:"This field is mandatory",
-        //         },
-        //         length : {
-        //             required:"This field is mandatory",
-        //         },
-        //         thickness :  {
-        //             required:"This field is mandatory",
-        //         },
-        //         volume : {
-        //             required:"This field is mandatory",
-        //         },
-        //         scalp : {
-        //             required:"This field is mandatory",
-        //         },
-        //         dandruff : {
-        //             required:"This field is mandatory",
-        //         },
-        //         hair_loss : {
-        //             required:"This field is mandatory",
-        //         },
-        //     },
-        // });
+            messages: {
+                texture : {
+                    required:"Please select one of the options",
+                },
+                state : {
+                    required:"This field is mandatory",
+                },
+                length : {
+                    required:"This field is mandatory",
+                },
+                thickness :  {
+                    required:"This field is mandatory",
+                },
+                volume : {
+                    required:"This field is mandatory",
+                },
+                scalp : {
+                    required:"This field is mandatory",
+                },
+                dandruff : {
+                    required:"This field is mandatory",
+                },
+                hair_loss : {
+                    required:"This field is mandatory",
+                },
+            },
+        });
 
-        // if(!form.valid()) return false;
+        if(!form.valid()) return false;
         
         if(animating) return false;
         animating = true;
