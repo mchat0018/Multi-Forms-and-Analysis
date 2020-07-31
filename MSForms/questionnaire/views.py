@@ -26,9 +26,9 @@ def externalFactorsSave(request):
     if request.method=='POST':
         dyed=request.POST.get('dyed')
         colored=request.POST.get('colored')
-        chemical_treatment=request.POST.get('chemical_treatment')
-        appliances=request.POST.get('appliances')
-        style=request.POST.get('style')
+        chemical_treatment=request.POST.get('chemical_treatment')      
+        appliances=request.POST.get('applianceList[]')
+        style=request.POST.get('styleList[]')
         hair_product=request.POST.get('hair_product')
         water_hardness=request.POST.get('water_hardness')
         sunlight_exposure=request.POST.get('sunlight_exposure')
@@ -41,7 +41,7 @@ def externalFactorsSave(request):
 
 def preferenceSave(request):
     if request.method=="POST":
-        hair_goals=request.POST.get('hair_goals')
+        hair_goals=request.POST.get('goalList[]')
         product_color=request.POST.get('product_color')
         bottle_name=request.POST.get('bottle_name')
 
@@ -49,4 +49,4 @@ def preferenceSave(request):
         obj.save()
         return HttpResponseRedirect(reverse('outcome'))
 
-    return render(request,'questionnaire.index3.html')
+    return render(request,'questionnaire/index3.html')

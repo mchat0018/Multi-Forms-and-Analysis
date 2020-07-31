@@ -1,0 +1,148 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'questionnaire/style.css' %}">
+        <title>Hello, world!</title>
+    </head>
+    <body>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form id="msform" action="" method="post">
+                    {% csrf_token %}
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active">Step 1</li>
+                        <li>Step 2</li>
+                        <li>Step 3</li>
+                        <li>Step 4</li>
+                        <li>Step 5</li>
+                        <li>Step 6</li>
+                        <li>Step 7</li>
+                        <li>Step 8</li>
+                    </ul>
+                    <!-- fieldsets -->
+                    <fieldset name="select" id="1">
+                        <h2 class="fs-title">Step 1</h2>
+                        <h3 class="fs-subtitle">Have you dyed your hair?</h3>
+                        <select name="dyed" id="dyed" class="required">
+                            <option value="" disabled="disabled">Choose an option</option>
+                            <option value="1">Yes</option>
+                            <option value="2">No</option>
+                        </select>
+                        <input type="button" name="next-1" class="next-1 action-button" value="Next" />
+                    </fieldset>
+                    <fieldset name="select" id="2">
+                        <h2 class="fs-title">Step 2</h2>
+                        <h3 class="fs-subtitle">If yes, your hair is</h3>
+                        <select name="colored" id="colored" class="required">
+                            <option value="" disabled="disabled">Choose an option</option>
+                            <option value="1">Highlighted</option>
+                            <option value="2">Permanent</option>
+                            <option value="3">Semi-Permanent</option>
+                            <option value="4">Bleached</option>
+                        </select>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+                    <fieldset name="select" id="3">
+                        <h2 class="fs-title">Step 3</h2>
+                        <h3 class="fs-subtitle">Have you ever had chemical treatment done?</h3>
+                        <select name="chemical_treatment" id="chemical_treatment" class="required">
+                            <option value="" disabled="disabled">Choose an option</option>
+                            <option value="1">No</option>
+                            <option value="2">Yes,Straightening or Waving</option>
+                            <option value="3">Yes, Keratin or Cysteine</option>
+                        </select>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+                    <fieldset name="multipleChoice" id="4">
+                        <h2 class="fs-title">Step 4</h2>
+                        <h3 class="fs-subtitle">Appliances you use on your hair<br><span class="text-muted">(You can choose more than one)</span></h3>
+                        
+                        <input type="checkbox" id="appliance1" name="applianceList[]",value="1",checked="checked">
+                        <label for="appliance1"> Hair Dryer </label>
+                        <input type="checkbox" id="appliance2" name="applianceList[]",value="2",checked="checked">
+                        <label for="appliance2"> Hair Straightner </label>
+                        <input type="checkbox" id="appliance3" name="applianceList[]",value="3",checked="checked">
+                        <label for="appliance3"> Curling Iron </label>
+                        <input type="checkbox" id="appliance4" name="applianceList[]",value="4",checked="checked">
+                        <label for="appliance4"> None </label>
+
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+                    <fieldset name="multipleChoice" id="5">
+                        <h2 class="fs-title">Step 5</h2>
+                        <h3 class="fs-subtitle">What do you apply to style your hair?<br>(You can choose more than one option)</h3>
+                        
+                        <input type="checkbox" id="style1" name="styleList[]",value="1",checked="checked">
+                        <label for="style1"> Hair Oil </label>
+                        <input type="checkbox" id="style2" name="styleList[]",value="2",checked="checked">
+                        <label for="style2"> Gel or Paste </label>
+                        <input type="checkbox" id="style3" name="styleList[]",value="3",checked="checked">
+                        <label for="style3"> Dry Shampoo </label>
+                        <input type="checkbox" id="style4" name="styleList[]",value="4",checked="checked">
+                        <label for="style4"> Hair Spray </label>
+                        <input type="checkbox" id="style5" name="styleList[]",value="5",checked="checked">
+                        <label for="style5"> Mousse </label>
+                        <input type="checkbox" id="style6" name="styleList[]",value="6",checked="checked">
+                        <label for="style6"> None </label>
+
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+                    <fieldset name="text" id="6">
+                        <h2 class="fs-title">Step 6</h2>
+                        <h3 class="fs-subtitle">Which hair product are you currently using?</h3>
+                        
+                        <input type="text" name="hair_product" id="hair_product" value="product" placeholder="Enter the product...">
+
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+                    <fieldset name="select" id="7">
+                        <h2 class="fs-title">Step 7</h2>
+                        <h3 class="fs-subtitle">What is the water hardness in your locality></h3>
+                        <select name="water_hardness" id="water_hardness" class="required">
+                            <option value="" disabled="disabled">Choose an option</option>
+                            <option value="1">Soft</option>
+                            <option value="2">Hard</option>
+                            <option value="3">I don't know</option>
+                        </select>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+                    <fieldset name="select" id="8">
+                        <h2 class="fs-title">Step 8</h2>
+                        <h3 class="fs-subtitle">How many hours of sunlight are you exposed to on a daily basis?</h3>
+                        <select name="sunlight_exposure" id="sunlight_exposure" class="required">
+                            <option value="" disabled="disabled">Choose an option</option>
+                            <option value="1">1 hour</option>
+                            <option value="2">1-3 hours</option>
+                            <option value="3">More than 3 hours</option>
+                        </select>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="submit" name="submit" class="submit action-button" value="Submit" />
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"  crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+        <script src="{% static 'questionnaire/jscript2.js' %}"></script>
+    </body>
+</html>
