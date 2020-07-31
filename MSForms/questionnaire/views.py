@@ -4,6 +4,7 @@ from django.urls import reverse
 from .models import HairProfile,ExternalFactors,Preferences
 # from formtools.wizard.views import SessionWizardView
 from django.http import HttpResponseRedirect
+import json
 
 def hairProfileSave(request):
     if request.method=='POST':
@@ -27,8 +28,21 @@ def externalFactorsSave(request):
         dyed=request.POST.get('dyed')
         colored=request.POST.get('colored')
         chemical_treatment=request.POST.get('chemical_treatment')      
-        appliances=request.POST.get('applianceList[]')
-        style=request.POST.get('styleList[]')
+        
+        appliance_lst=request.POST.get('applianceList[]')
+        appliance_lst=appliance_lst.split('&')
+        appliances=''
+        for ap in appliance_lst:
+            appliances+=ap[-1]+','
+        appliances=appliances[:len(appliances)-1]
+
+        style_lst=request.POST.get('styleList[]')
+        style_lst=style_lst.split('&')
+        style=''
+        for st in style_lst:
+            style+=st[-1]+','
+        style=style[:len(style)-1]
+
         hair_product=request.POST.get('hair_product')
         water_hardness=request.POST.get('water_hardness')
         sunlight_exposure=request.POST.get('sunlight_exposure')
@@ -41,7 +55,13 @@ def externalFactorsSave(request):
 
 def preferenceSave(request):
     if request.method=="POST":
-        hair_goals=request.POST.get('goalList[]')
+        goals_lst=request.POST.get('goalList[]')
+        goals_lst=goals_lst.split('&')
+        hair_goals=''
+        for st in goals_lst:
+            hair_goals+=st[-1]+','
+        hair_goals=hair_goals[:len(hair_goals)-1]
+
         product_color=request.POST.get('product_color')
         bottle_name=request.POST.get('bottle_name')
 

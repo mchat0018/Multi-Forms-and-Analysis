@@ -94,7 +94,7 @@ class ExternalFactors(models.Model):
         ('3','Curling Iron'),
         ('4','None')
     ]
-    appliances=models.CharField(max_length=1,choices=appliance_choices)
+    appliances=MultiSelectField(max_length=8,choices=appliance_choices)
 
     style_choices=[
         ('1','Hair Oil'),
@@ -105,7 +105,7 @@ class ExternalFactors(models.Model):
         ('6','None')
     ]
 
-    style=models.CharField(choices=style_choices, max_length=1)
+    style=MultiSelectField(choices=style_choices, max_length=12)
 
     hair_product=models.CharField(max_length=30)
 
@@ -136,7 +136,7 @@ class Preferences(models.Model):
         ('11','Damage Repair'),('12','Anti-dandruff'),
         ('13','Color Protection'),('14','Thermal Protection')
     ]
-    hair_goals=models.CharField(max_length=2,choices=goals)
+    hair_goals=MultiSelectField(max_length=28,choices=goals)
 
     color_choices=[
         ('1','Peach (with Apricot)'),('2','Pink (with Strawberry'),
